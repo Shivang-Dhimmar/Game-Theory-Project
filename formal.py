@@ -1,5 +1,5 @@
 import networkx as nx
-from z3 import Solver, Real, Sum, sat
+from z3 import Solver, Real, Sum, sat, Implies
 from collections import defaultdict
 import random
 
@@ -99,11 +99,17 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
                 cost_components.append(k * x + p)
             path_cost_exprs.append(Sum(cost_components))
 
-        # wardrop equilibrium, all path costs for a commodity must be equal
-        # for j in range(1, len(path_cost_exprs)):
-        #     solver.add(path_cost_exprs[0] == path_cost_exprs[j])
+        # wardrop equilibrium, if a path is used (flow > 0), its cost must be equal to the minimum cost for that commodity.
+        min_cost_var = Real(f"min_cost_comm{i}")
+        for j, path in enumerate(paths):
+            flow_var = path_flow_vars[i][j]
+            cost_expr = path_cost_exprs[j]
+            # if flow is positive, cost must equal the minimum.
+            solver.add(Implies(flow_var > 0, cost_expr == min_cost_var))
+            # cost of any path must be greater than or equal to the minimum.
+            solver.add(cost_expr >= min_cost_var)
 
-        equilibrium_costs[f"{s}->{d}"] = path_cost_exprs[0]
+        equilibrium_costs[f"{s}->{d}"] = min_cost_var
 
     if solver.check() == sat:
         model = solver.model()
