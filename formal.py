@@ -224,33 +224,60 @@ traffic = [
     ("Mangal pandey", "Diamond Park", 150),
 ]
 
-nodes = []
-useful_edges = []
-for i, j, k in multigraph_edges:
-    attr = {
-        "k": 1.0,
-        "capacity": 1e5,
-        "price": None,
-    }
-    useful_edges.append((i, j, attr))
-    useful_edges.append((j, i, attr))
-    if i not in nodes:
-        nodes.append(i)
-    if j not in nodes:
-        nodes.append(j)
-
-low = 0
-high = 1000000
-minimal_capacity = high
-
-while low <= high:
-    mid = (low + high) // 2
+def solve_for_one_network():
     nodes = []
     useful_edges = []
     for i, j, k in multigraph_edges:
         attr = {
             "k": 1.0,
-            "capacity": mid,
+            "capacity": 1e5,
+            "price": None,
+        }
+        useful_edges.append((i, j, attr))
+        useful_edges.append((j, i, attr))
+        if i not in nodes:
+            nodes.append(i)
+        if j not in nodes:
+            nodes.append(j)
+
+    low = 0
+    high = 1000000
+    minimal_capacity = high
+
+    while low <= high:
+        mid = (low + high) // 2
+        nodes = []
+        useful_edges = []
+        for i, j, k in multigraph_edges:
+            attr = {
+                "k": 1.0,
+                "capacity": mid,
+                "price": None,
+            }
+            useful_edges.append((i, j, attr))
+            useful_edges.append((j, i, attr))
+            if i not in nodes:
+                nodes.append(i)
+            if j not in nodes:
+                nodes.append(j)
+
+        solution = solve_traffic_equilibrium(nodes, useful_edges, traffic)
+        if solution:
+            minimal_capacity = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    print(f"\nMinimal capacity that keeps the model satisfiable: {minimal_capacity}")
+    input()
+
+    # run with the minimal capacity
+    nodes = []
+    useful_edges = []
+    for i, j, k in multigraph_edges:
+        attr = {
+            "k": 1.0,
+            "capacity": minimal_capacity,
             "price": None,
         }
         useful_edges.append((i, j, attr))
@@ -261,63 +288,55 @@ while low <= high:
             nodes.append(j)
 
     solution = solve_traffic_equilibrium(nodes, useful_edges, traffic)
+
     if solution:
-        minimal_capacity = mid
-        high = mid - 1
+        print("Success - Found a satisfying assignment for equilibrium:")
+
+        print("\n\ncalculated metro ticket prices:")
+        if solution["prices"]:
+            for (u, v), price in solution["prices"].items():
+                print(f"  - Price for {u}->{v}: {price}")
+        else:
+            print("  - No variable prices to solve for.")
+
+        print("\n\nResulting edge flows at equilibrium:")
+
+        # re-create graph to access capacity info
+        G_sol = nx.DiGraph()
+        for u, v, attr in useful_edges:
+            G_sol.add_edge(u, v, **attr)
+        for (u, v), flow in sorted(solution["edge_flows"].items()):
+            capacity = G_sol.get_edge_data(u, v).get("capacity", "inf")
+            status = "works" if float(flow) <= capacity else "RIP safety"
+            print(f"  - Flow on {u}->{v}: {flow} (capacity: {capacity}) -> {status}")
+
+        print("\n\nResulting path flows for each commodity:")
+        for comm, path_flows in solution["path_flows"].items():
+            print(f"  - Commodity {comm}:")
+            for path, flow in path_flows.items():
+                if float(flow) > 1e-6:
+                    print(f"    - path {path}: flow = {flow}")
+
+        print("\n\nEquilibrium costs:")
+        for route, cost in solution["equilibrium_costs"].items():
+            print(f"  - minimized cost for travelers from {route}: {cost}")
     else:
-        low = mid + 1
+        print("\n\nNo solution found. The safety limits are too strict.")
 
-print(f"\nMinimal capacity that keeps the model satisfiable: {minimal_capacity}")
-input()
+solve_for_one_network()
 
-# run with the minimal capacity
-nodes = []
-useful_edges = []
-for i, j, k in multigraph_edges:
-    attr = {
-        "k": 1.0,
-        "capacity": minimal_capacity,
-        "price": None,
-    }
-    useful_edges.append((i, j, attr))
-    useful_edges.append((j, i, attr))
-    if i not in nodes:
-        nodes.append(i)
-    if j not in nodes:
-        nodes.append(j)
+while True:
+    print("\nAdd a new metro line (or press Enter to exit)")
+    src = input("Source station: ").strip()
+    if src == "":
+        print("Exiting simulation.")
+        break
+    dst = input("Destination station: ").strip()
+    color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
 
-solution = solve_traffic_equilibrium(nodes, useful_edges, traffic)
+    # add the new edge both ways
+    multigraph_edges.append((src, dst, color))
 
-if solution:
-    print("Success - Found a satisfying assignment for equilibrium:")
-
-    print("\n\ncalculated metro ticket prices:")
-    if solution["prices"]:
-        for (u, v), price in solution["prices"].items():
-            print(f"  - Price for {u}->{v}: {price}")
-    else:
-        print("  - No variable prices to solve for.")
-
-    print("\n\nResulting edge flows at equilibrium:")
-
-    # re-create graph to access capacity info
-    G_sol = nx.DiGraph()
-    for u, v, attr in useful_edges:
-        G_sol.add_edge(u, v, **attr)
-    for (u, v), flow in sorted(solution["edge_flows"].items()):
-        capacity = G_sol.get_edge_data(u, v).get("capacity", "inf")
-        status = "works" if float(flow) <= capacity else "RIP safety"
-        print(f"  - Flow on {u}->{v}: {flow} (capacity: {capacity}) -> {status}")
-
-    print("\n\nResulting path flows for each commodity:")
-    for comm, path_flows in solution["path_flows"].items():
-        print(f"  - Commodity {comm}:")
-        for path, flow in path_flows.items():
-            if float(flow) > 1e-6:
-                print(f"    - path {path}: flow = {flow}")
-
-    print("\n\nEquilibrium costs:")
-    for route, cost in solution["equilibrium_costs"].items():
-        print(f"  - minimized cost for travelers from {route}: {cost}")
-else:
-    print("\n\nNo solution found. The safety limits are too strict.")
+    print(f"\n Added new metro line: {src} <-> {dst} ({color})")
+    print("Recomputing equilibrium with updated network...")
+    solve_for_one_network()
