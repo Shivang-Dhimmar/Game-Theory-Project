@@ -37,8 +37,9 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
     for u, v, data in G.edges(data=True):
         if data.get("price") is None:
             p_var = Real(f"p_{u}_{v}")
-            solver.add(p_var >= 0)  # negative prices too overpowered for this world
-            price_vars[(u, v)] = p_var
+            if data.get("distance"):    
+                solver.add(p_var >= data.get("distance")*2.0)  # negative prices too overpowered for this world
+                price_vars[(u, v)] = p_var
 
     # create a variable for the flow on every possible path for each commodity
     path_flow_vars = defaultdict(list)
@@ -79,8 +80,8 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
     # add equilibrium constraints (indifference)
     equilibrium_costs = {}
     for i, (s, d, w) in enumerate(commodities):
-        if i in commodity_paths and len(commodity_paths[i]) <= 1:
-            print(f"{i} has only 1 route.")
+        # if i in commodity_paths and len(commodity_paths[i]) <= 1:
+        #     print(f"{i} has only 1 route.")
         if i not in commodity_paths or len(commodity_paths[i]) <= 1:
             continue
 
@@ -229,9 +230,10 @@ def solve_for_one_network():
     useful_edges = []
     for i, j, k in multigraph_edges:
         attr = {
-            "k": 1.0,
+            "k": 0.1,
             "capacity": 1e5,
             "price": None,
+            "distance": random.randint(5, 100)
         }
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
@@ -250,9 +252,10 @@ def solve_for_one_network():
         useful_edges = []
         for i, j, k in multigraph_edges:
             attr = {
-                "k": 1.0,
+                "k": 0.1,
                 "capacity": mid,
                 "price": None,
+                "distance": random.randint(5, 100)
             }
             useful_edges.append((i, j, attr))
             useful_edges.append((j, i, attr))
@@ -276,9 +279,10 @@ def solve_for_one_network():
     useful_edges = []
     for i, j, k in multigraph_edges:
         attr = {
-            "k": 1.0,
+            "k": 0.1,
             "capacity": minimal_capacity,
             "price": None,
+            "distance": random.randint(5, 100)
         }
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
