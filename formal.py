@@ -1,4 +1,5 @@
 import networkx as nx
+import json
 from z3 import Solver, Real, Sum, sat, Implies
 from collections import defaultdict
 import random
@@ -151,81 +152,12 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
         return None
 
 
-multigraph_edges = [
-    # Line 1 - Blue Line (Dakshineshwar -> Kavi Subhash)
-    ("Dakshineshwar", "Baranagar", "blue"),
-    ("Baranagar", "Noapara", "blue"),
-    ("Noapara", "Dum Dum", "blue"),
-    ("Dum Dum", "Esplanade", "blue"),
-    ("Esplanade", "Park Street", "blue"),
-    ("Park Street", "Rabinder Sarobar", "blue"),
-    ("Rabinder Sarobar", "Kavi Subhash", "blue"),
-    # Line 2 - Green Line (Howrah Maidan -> Salt Lake)
-    ("Howrah Maidan", "Sealdah", "green"),
-    ("Sealdah", "Esplanade", "green"),
-    (
-        "Esplanade",
-        "Salt Lake",
-        "green",
-    ),  # "Salt Lake" node assumed to be an interchange, e.g., Sec V
-    # Line 3 - Purple Line (Joka -> Esplanade)
-    ("Majherhat", "Diamond Park", "purple"),
-    ("Diamond Park", "Park Street", "purple"),
-    (
-        "Park Street",
-        "Esplanade",
-        "purple",
-    ),  # Note: Park St-Esplanade is a multigraph section (Blue & Purple)
-    # Line 4 - Yellow Line (Noapara -> Barasat)
-    ("Noapara", "Barasat", "yellow"),
-    # Line 5 - Pink Line (Baranagar -> Barrackpore)
-    ("Baranagar", "Mangal pandey", "pink"),  # Mangal Pandey is on this line
-    # Line 6 - Orange Line (Kavi Subhash -> Jai Hind/Airport)
-    ("Kavi Subhash", "Balygunj", "orange"),
-    ("Balygunj", "Salt Lake", "orange"),
-    ("Salt Lake", "Jai Hind", "orange"),
-]
-
-traffic = [
-    # High Traffic (Hub-to-Hub / Hub-to-Rail)
-    ("Howrah Maidan", "Sealdah", 2000),
-    ("Dum Dum", "Esplanade", 1950),
-    ("Sealdah", "Esplanade", 1900),
-    ("Dum Dum", "Park Street", 1850),
-    ("Howrah Maidan", "Esplanade", 1800),
-    ("Kavi Subhash", "Esplanade", 1750),
-    ("Kavi Subhash", "Park Street", 1700),
-    ("Salt Lake", "Sealdah", 1650),
-    ("Salt Lake", "Esplanade", 1600),
-    ("Jai Hind", "Howrah Maidan", 1550),
-    ("Jai Hind", "Esplanade", 1500),
-    # Medium Traffic (Suburban-to-Hub / Airport-to-Suburban)
-    ("Barasat", "Dum Dum", 1300),
-    ("Barasat", "Esplanade", 1250),
-    ("Dakshineshwar", "Esplanade", 1200),
-    ("Rabinder Sarobar", "Howrah Maidan", 1150),
-    ("Baranagar", "Park Street", 1100),
-    ("Majherhat", "Esplanade", 1000),
-    ("Majherhat", "Park Street", 950),
-    ("Mangal pandey", "Esplanade", 900),
-    ("Balygunj", "Park Street", 850),
-    ("Diamond Park", "Park Street", 800),
-    ("Kavi Subhash", "Balygunj", 750),
-    ("Jai Hind", "Salt Lake", 700),
-    # Low Traffic (Cross-Suburban / Multi-Transfer)
-    ("Dakshineshwar", "Howrah Maidan", 650),
-    ("Barasat", "Kavi Subhash", 600),
-    ("Majherhat", "Sealdah", 550),
-    ("Diamond Park", "Dum Dum", 500),
-    ("Mangal pandey", "Jai Hind", 350),
-    ("Mangal pandey", "Baranagar", 400),
-    ("Dakshineshwar", "Majherhat", 300),
-    ("Barasat", "Majherhat", 250),
-    ("Rabinder Sarobar", "Balygunj", 200),
-    ("Mangal pandey", "Diamond Park", 150),
-]
 
 def solve_for_one_network():
+   with open('network.json', 'r') as f:
+    data = json.load(f)
+    multigraph_edges = data["edges"]
+    traffic = data["traffic"]
     nodes = []
     useful_edges = []
     for i, j, k in multigraph_edges:
@@ -307,8 +239,46 @@ def solve_for_one_network():
 
         # re-create graph to access capacity info
         G_sol = nx.DiGraph()
+        
         for u, v, attr in useful_edges:
             G_sol.add_edge(u, v, **attr)
+        # --- START: ADDED CODE FOR AVG TIME CALCULATION ---
+        solution["average_times"] = {}
+        for comm_key, path_data in solution["path_flows"].items():
+            total_weighted_time = 0
+            total_flow_for_comm = 0
+            
+            for path_str, flow_val_str in path_data.items():
+                flow_val = float(flow_val_str)
+                if flow_val < 1e-6: # Skip paths with no flow
+                    continue
+
+                path_time = 0
+                nodes_list = path_str.split("->")
+                path_edges = list(zip(nodes_list[:-1], nodes_list[1:]))
+
+                for u, v in path_edges:
+                    edge_data = G_sol.get_edge_data(u, v)
+                    distance = edge_data.get("distance", 0)
+                    k = edge_data.get("k", 0)
+                    # Get the total flow 'x' on this edge
+                    x = float(solution["edge_flows"][(u, v)])
+
+                    # Calculate time for this edge: (k * x) + distance
+                    edge_time = (k * x) + distance
+                    path_time += edge_time
+                
+                # Add this path's total time, weighted by its flow
+                total_weighted_time += path_time * flow_val
+                total_flow_for_comm += flow_val
+
+            # Calculate the final average time for this commodity
+            if total_flow_for_comm > 0:
+                avg_time = total_weighted_time / total_flow_for_comm
+                solution["average_times"][comm_key] = f"{avg_time:.2f}"
+            else:
+                solution["average_times"][comm_key] = "0.00"
+        # --- END: ADDED CODE FOR AVG TIME CALCULATION ---
         for (u, v), flow in sorted(solution["edge_flows"].items()):
             capacity = G_sol.get_edge_data(u, v).get("capacity", "inf")
             status = "works" if float(flow) <= capacity else "RIP safety"
@@ -324,23 +294,16 @@ def solve_for_one_network():
         print("\n\nEquilibrium costs:")
         for route, cost in solution["equilibrium_costs"].items():
             print(f"  - minimized cost for travelers from {route}: {cost}")
+        print("\n\nAverage Commodity Time (Congestion + Distance):")
+        if solution["average_times"]:
+            for comm, time in solution["average_times"].items():
+                print(f"   - Avg. Time for {comm}: {time}")
+        else:
+            print("   - No time data calculated.")
+    
     else:
         print("\n\nNo solution found. The safety limits are too strict.")
+    
 
 solve_for_one_network()
 
-while True:
-    print("\nAdd a new metro line (or press Enter to exit)")
-    src = input("Source station: ").strip()
-    if src == "":
-        print("Exiting simulation.")
-        break
-    dst = input("Destination station: ").strip()
-    color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
-
-    # add the new edge both ways
-    multigraph_edges.append((src, dst, color))
-
-    print(f"\n Added new metro line: {src} <-> {dst} ({color})")
-    print("Recomputing equilibrium with updated network...")
-    solve_for_one_network()
