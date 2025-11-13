@@ -1,0 +1,133 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{8}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{{Hintermann, Beat et al.}}{{Hintermann, Beat et al.}}{2025}]%
+        {hintermann_beat_et_al_pigovian_2025}
+\bibfield{author}{\bibinfo{person}{{Hintermann, Beat et al.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{Pigovian {Transport} {Pricing} in {Practice}}.
+\newblock
+\newblock
+\newblock
+\shownote{CESifo Working Paper,CESifo Working Paper.}
+
+
+\bibitem[\protect\citeauthoryear{Liu and Lv}{Liu and Lv}{2015}]%
+        {liu_research_2015}
+\bibfield{author}{\bibinfo{person}{Lu-mei Liu} {and} \bibinfo{person}{Yong-bo Lv}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Research on {Dynamic} {Adjustment} {Strategy} of {Metro} {Fare} {Based} on {Game} {Theory}}. In \bibinfo{booktitle}{\emph{{CICTP} 2015}}. \bibinfo{publisher}{American Society of Civil Engineers}, \bibinfo{address}{Beijing, China}, \bibinfo{pages}{3798--3805}.
+\newblock
+\showISBNx{978-0-7844-7929-2}
+\urldef\tempurl%
+\url{https://doi.org/10.1061/9780784479292.350}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Mozafari, Karimi, and Mahootchi}{Mozafari et~al\mbox{.}}{2015}]%
+        {mozafari_dynamic_2015}
+\bibfield{author}{\bibinfo{person}{Marzieh Mozafari}, \bibinfo{person}{Behrooz Karimi}, {and} \bibinfo{person}{Masoud Mahootchi}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Dynamic pricing and freight transportation planning in oligopolistic freight networks: a game theoretic approach}.
+\newblock \bibinfo{journal}{\emph{Transportmetrica A: Transport Science}} \bibinfo{volume}{11}, \bibinfo{number}{10} (\bibinfo{date}{Nov.} \bibinfo{year}{2015}), \bibinfo{pages}{918--938}.
+\newblock
+\showISSN{2324-9935, 2324-9943}
+\urldef\tempurl%
+\url{https://doi.org/10.1080/23249935.2015.1086907}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Saharan, Bawa, and Kumar}{Saharan et~al\mbox{.}}{2020}]%
+        {saharan_dynamic_2020}
+\bibfield{author}{\bibinfo{person}{Sandeep Saharan}, \bibinfo{person}{Seema Bawa}, {and} \bibinfo{person}{Neeraj Kumar}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Dynamic pricing techniques for {Intelligent} {Transportation} {System} in smart cities: {A} systematic review}.
+\newblock \bibinfo{journal}{\emph{Computer Communications}}  \bibinfo{volume}{150} (\bibinfo{date}{Jan.} \bibinfo{year}{2020}), \bibinfo{pages}{603--625}.
+\newblock
+\showISSN{01403664}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.comcom.2019.12.003}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Wardrop}{Wardrop}{1952}]%
+        {wardrop_road_1952}
+\bibfield{author}{\bibinfo{person}{J~G Wardrop}.} \bibinfo{year}{1952}\natexlab{}.
+\newblock \showarticletitle{{ROAD} {PAPER}. {SOME} {THEORETICAL} {ASPECTS} {OF} {ROAD} {TRAFFIC} {RESEARCH}.}
+\newblock \bibinfo{journal}{\emph{Proceedings of the Institution of Civil Engineers}} \bibinfo{volume}{1}, \bibinfo{number}{3} (\bibinfo{date}{May} \bibinfo{year}{1952}), \bibinfo{pages}{325--362}.
+\newblock
+\showISSN{1753-7789}
+\urldef\tempurl%
+\url{https://doi.org/10.1680/ipeds.1952.11259}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Wardrop and Whitehead}{Wardrop and Whitehead}{1952}]%
+        {wardrop_correspondence_1952}
+\bibfield{author}{\bibinfo{person}{J~G Wardrop} {and} \bibinfo{person}{J~I Whitehead}.} \bibinfo{year}{1952}\natexlab{}.
+\newblock \showarticletitle{{CORRESPONDENCE}. {SOME} {THEORETICAL} {ASPECTS} {OF} {ROAD} {TRAFFIC} {RESEARCH}.}
+\newblock \bibinfo{journal}{\emph{Proceedings of the Institution of Civil Engineers}} \bibinfo{volume}{1}, \bibinfo{number}{5} (\bibinfo{date}{Oct.} \bibinfo{year}{1952}), \bibinfo{pages}{767--768}.
+\newblock
+\showISSN{1753-7789}
+\urldef\tempurl%
+\url{https://doi.org/10.1680/ipeds.1952.11362}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{z3}{z3}{2025}]%
+        {z3_user_guide}
+z3 \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{Z3 {User} {Guide}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://microsoft.github.io/z3guide/docs/logic/intro}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zhang and Zhao}{Zhang and Zhao}{2024}]%
+        {zhang_optimal_2024}
+\bibfield{author}{\bibinfo{person}{Yihua Zhang} {and} \bibinfo{person}{Zhan Zhao}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Optimal dynamic pricing for public transportation considering consumer social learning}.
+\newblock \bibinfo{journal}{\emph{PLOS ONE}} \bibinfo{volume}{19}, \bibinfo{number}{1} (\bibinfo{date}{Jan.} \bibinfo{year}{2024}), \bibinfo{pages}{e0296263}.
+\newblock
+\showISSN{1932-6203}
+\urldef\tempurl%
+\url{https://doi.org/10.1371/journal.pone.0296263}
+\showDOI{\tempurl}
+
+
+\end{thebibliography}
