@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{8}
+\begin{thebibliography}{9}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -56,6 +56,18 @@
 \urldef\tempurl%
 \url{https://doi.org/10.1061/9780784479292.350}
 \showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{{Metro Railway Kolkata}}{{Metro Railway Kolkata}}{2025}]%
+        {metro_railway_kolkata_metro_2025}
+\bibfield{author}{\bibinfo{person}{{Metro Railway Kolkata}}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{Metro {Railway}, {Kolkata}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://mtp.indianrailways.gov.in/view_section.jsp?fontColor=black&backgroundColor=LIGHTSTEELBLUE&lang=0&id=0,1}
+\showURL{%
+\tempurl}
 
 
 \bibitem[\protect\citeauthoryear{Mozafari, Karimi, and Mahootchi}{Mozafari et~al\mbox{.}}{2015}]%

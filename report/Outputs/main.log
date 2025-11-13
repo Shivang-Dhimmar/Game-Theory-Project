@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.26)  13 NOV 2025 06:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.26)  13 NOV 2025 08:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -790,7 +790,11 @@ Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 97.
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count343
 \l__pdf_internal_box=\box72
-) (/Users/sagar/Documents/GitHub/Game-Theory-Project/report/Outputs/main.aux)
+) (/Users/sagar/Documents/GitHub/Game-Theory-Project/report/Outputs/main.aux
+
+LaTeX Warning: Label `fig:3' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 97.
@@ -1020,49 +1024,52 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 107.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
  (/usr/local/texlive/2025basic/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2025basic/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 9.0pt on input line 118.
+(Font)              scaled to size 9.0pt on input line 119.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.6pt on input line 118.
+(Font)              scaled to size 6.6pt on input line 119.
 
 
-Class aamas Warning: A possible image without description on input line 125.
+Class aamas Warning: A possible image without description on input line 122.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
@@ -1071,7 +1078,7 @@ Class aamas Warning: A possible image without description on input line 125.
 [1.1{/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}
 
 {/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 151--160
+Underfull \hbox (badness 10000) in paragraph at lines 152--161
 
  []
 
@@ -1083,51 +1090,71 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <example-image.pdf, id=86, 321.2pt x 240.9pt>
 File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 170.
+Package pdftex.def Info: example-image.pdf  used on input line 169.
 (pdftex.def)             Requested size: 192.91872pt x 144.69182pt.
 
-Class aamas Warning: A possible image without description on input line 173.
+Class aamas Warning: A possible image without description on input line 172.
 
 File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 177.
+Package pdftex.def Info: example-image.pdf  used on input line 176.
 (pdftex.def)             Requested size: 192.91872pt x 144.69182pt.
 
-Class aamas Warning: A possible image without description on input line 180.
+Class aamas Warning: A possible image without description on input line 179.
 
 
 
 [2.2 </usr/local/texlive/2025basic/texmf-dist/tex/latex/mwe/example-image.pdf>]
-File: example-image.pdf Graphic file (type pdf)
-<use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 215.
-(pdftex.def)             Requested size: 192.91872pt x 144.69182pt.
 
 
-Class aamas Warning: A possible image without description on input line 218.
+LaTeX Warning: Reference `github' on page 3 undefined on input line 226.
 
 File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 222.
+Package pdftex.def Info: example-image.pdf  used on input line 237.
 (pdftex.def)             Requested size: 192.91872pt x 144.69182pt.
 
-Class aamas Warning: A possible image without description on input line 225.
+Class aamas Warning: A possible image without description on input line 240.
+
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+Package pdftex.def Info: example-image.pdf  used on input line 244.
+(pdftex.def)             Requested size: 192.91872pt x 144.69182pt.
+
+Class aamas Warning: A possible image without description on input line 247.
+
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+Package pdftex.def Info: example-image.pdf  used on input line 251.
+(pdftex.def)             Requested size: 192.91872pt x 144.69182pt.
+
+Class aamas Warning: A possible image without description on input line 254.
 
 
 
-Processing 'acks' comment.
+[3.3] Processing 'acks' comment.
 \openout3 = `comment.cut'.
 
  Comment 'acks' writing to comment.cut. Straight input of comment.cut. (/Users/sagar/Documents/GitHub/Game-Theory-Project/report/Outputs/comment.cut) (/Users/sagar/Documents/GitHub/Game-Theory-Project/report/Outputs/main.bbl
-LaTeX Info: Redefining \tempurl on input line 69.
+LaTeX Info: Redefining \tempurl on input line 68.
+
+Underfull \hbox (badness 1354) in paragraph at lines 63--71
+[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) Metro Rail-way Kolkata. 2025.  Metro Rail-way, Kolkata.    []$https : / / mtp .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--71
+\T1/LinuxLibertineT-TLF/m/n/7 (+20) indianrailways . gov . in / view _ section . jsp ? fontColor = black & backgroundColor =
+ []
+
 LaTeX Info: Redefining \tempurl on input line 81.
 
 
-[3.3]
 LaTeX Info: Redefining \tempurl on input line 93.
 LaTeX Info: Redefining \tempurl on input line 105.
-LaTeX Info: Redefining \tempurl on input line 116.
-LaTeX Info: Redefining \tempurl on input line 129.
+LaTeX Info: Redefining \tempurl on input line 117.
+LaTeX Info: Redefining \tempurl on input line 128.
+LaTeX Info: Redefining \tempurl on input line 141.
 )
 
 Class aamas Warning: Some images may lack descriptions.
@@ -1138,11 +1165,10 @@ Class aamas Warning: CCS concepts are mandatory for papers over two pages.
 
 
 
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
-
-Overfull \vbox (1.16599pt too high) has occurred while \output is active []
-
- (/usr/local/texlive/2025basic/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
+(/usr/local/texlive/2025basic/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2025basic/texmf-dist/tex/generic/stringenc/se-utf8.def
 File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
@@ -1151,23 +1177,30 @@ File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7433DB60E481063253D99899A92D1177;1427.
+(rerunfilecheck)             Checksum: F42AAC9F14961F4F770A9F118A65C09F;1427.
  )
 (\end occurred when \ifx on line 14 was incomplete) 
 Here is how much of TeX's memory you used:
- 31097 strings out of 474662
- 563454 string characters out of 5751109
- 981827 words of memory out of 5000000
- 53065 multiletter control sequences out of 15000+600000
- 679038 words of font info for 296 fonts, out of 8000000 for 9000
+ 31112 strings out of 474662
+ 563865 string characters out of 5751109
+ 984761 words of memory out of 5000000
+ 53071 multiletter control sequences out of 15000+600000
+ 679568 words of font info for 300 fonts, out of 8000000 for 9000
  480 hyphenation exceptions out of 8191
- 90i,14n,131p,1054b,739s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,14n,131p,1054b,762s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/newtx/LibertineMathMI5.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/newtx/LibertineMathMI7.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on /Users/sagar/Documents/GitHub/Game-Theory-Project/report/Outputs/main.pdf (4 pages, 386186 bytes).
+Output written on /Users/sagar/Documents/GitHub/Game-Theory-Project/report/Outputs/main.pdf (4 pages, 402695 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 167 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
+ 213 PDF objects out of 1000 (max. 8388607)
+ 178 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
  63606 words of extra memory for PDF output out of 74296 (max. 10000000)
 

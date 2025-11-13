@@ -114,15 +114,16 @@ Game theory allows us to reason about traffic load distribution at equilibrium. 
 Transportation networks have become an essential part of urban planning. The ability to rapidly move large numbers of commuters from residential to industrial or tourist parts of a city is critical for its economic growth.
 As road congestion and traffic problems continue to worsen, governments across the world are investing aggresively towards expanding rapid transit systems like metros. As new routes are added, commuters get access to alternate direct or indirect routes to reach their destinations.
 
-The two most crucial factors influencing a commuter's preferences between alternative routes are the total price of the route and the congestion on it. 
-Consider three cities A, B and C connected via metro lines as shown in Figure \ref{fig:naivePricing}. If say \( 10 \) and $5$ be the number of commuter travelling daily from A to C and from B to C respectively, while the capacity of the routes are 5 each and the ticket prices are $10$ and $5$. Suppose a new metro line AB is opened with a capacity of $10$. If the route AB is priced less than $5$ then all $10$ commuters from A to C will prefer the route A-B-C leading to exceeding capacity on the route B-C. On the other hand if the price is set too high then none of the commuters will use the new route, wasting public resources. 
-Hence a naive approach of pricing based on demand surveys between source-destination pairs without considering how the flow redistributes may lead to exceeding capacity or underutilisation on certain routes of the network.
-\begin{figure}
+\begin{figure}[h]
     \centering
     \drawNaivePricingFigure
     \caption{Ex: Setting Low prices can lead to exceding capacity}
     \label{fig:naivePricing}
 \end{figure}
+
+The two most crucial factors influencing a commuter's preferences between alternative routes are the total price of the route and the congestion on it. 
+Consider three cities A, B and C connected via metro lines as shown in Figure \ref{fig:naivePricing}. If say \( 10 \) and $5$ be the number of commuter travelling daily from A to C and from B to C respectively, while the capacity of the routes are 5 each and the ticket prices are $10$ and $5$. Suppose a new metro line AB is opened with a capacity of $10$. If the route AB is priced less than $5$ then all $10$ commuters from A to C will prefer the route A-B-C leading to exceeding capacity on the route B-C. On the other hand if the price is set too high then none of the commuters will use the new route, wasting public resources. 
+Hence a naive approach of pricing based on demand surveys between source-destination pairs without considering how the flow redistributes may lead to exceeding capacity or underutilisation on certain routes of the network.
 
 Congestion is another factor that influences commuter preferences over the routes. Highly congested routes would be avoided by commuters even if they are cheaper. Although they might still prefer metro over buses (or newer metro over older) given same congestion and price incurred on both the routes. To capture this we model the cost incurred by a commuter on a route to be \(kx + p \) where \(k\) is the congestion factor of the route, \(x\) the number of commuters using the route and \(p\) is the price of using the route. Each commuter would then choose the route that incurrs them the least net cost. 
 
@@ -163,8 +164,6 @@ In the next section we study Kolkata metro system -- role in it public transport
 \subsection{Kolkata Metro Network}
 \label{sec:kolkataMetro}
 
-TODO: Exisitng lines -- Upcoming projects -- Utilities -- Existing Fares -- Current Demand -- Residential /Industrial Regions.  
-
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{example-image}
@@ -178,6 +177,9 @@ TODO: Exisitng lines -- Upcoming projects -- Utilities -- Existing Fares -- Curr
     \caption{Existing Fare Card}
     \label{fig:3}
 \end{figure}
+
+TODO: Exisitng lines -- Upcoming projects -- Utilities -- Existing Fares -- Current Demand -- Residential /Industrial Regions.  
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -214,16 +216,26 @@ under the constraints (C1) - (C5).
 \section{Experiments and Results}
 \label{sec:ExpResults}
 
+We used publicly available including Google Maps and Wikipedia to estimate the parameters needed to build our model of Kolkata Metro as described in Section \ref{sec:Model}. 
+The demand for direct routes between hubs were set based on population density, availability of public utilities like airports, hospitals nearby and location of offices/industries. Each direct route was thus classified High / Medium / Low demand and the demands were set randomly within a range for each class so that the total demand nearly matched the reported daily ridership of Kolkata metro \cite{metro_railway_kolkata_metro_2025}.
+$k$ was chosen to be 2 for all bus routes and less than 1 for metro lines depending on how old the line was. The capacity of each route was set based on current ridership on the line divided by the number of stations on the line, while for bus routes it was kept constant for all direct routes. We used exsiting fare charts to set the prices for the existing routes. 
 
+Z3 solver \cite{z3_user_guide} was used to encode the constraints C1 - C5 and set a very high price for all new routes. We then used binary search to find the minimum price at which the constraints were satisfed. Z3 is a general purpose SMT solver and was able to check satisfyiablity of our constraints in reasonable time.
+To limit the number of constraints, we pruned the max length of a route to be 4 hops. This is reasonable since since every transfer takes away valuable time of the commuters.
+We also perform a sensitivity analysis by changing the parameters like demand, capacity and congestion factor by small amounts to see how they impact the results.
+More details can be found in the code repository \ref{github}. 
 
-TODO: Describe the experiments conducted, how the datasets created, and the results obtained from implementing the dynamic pricing algorithm.
-Codebase link -- Z3 solver\cite{z3_user_guide} to encode the optmisation problem. -- How it solves the sat instance -- Explain how the parameters chosen --demand signals based on Availability of utilities like airport -- dense population areas -- capacity using binary search. -- details of the run in the codebase -- Experiments --
-Revenue Generated vs Avg commute time -- Revenue Generated/ Avg Cost time w.r.t order of adding routes. -- Exp: Sensititivity analysis - another set of parameters how the graphs change etc. 
+Figure \ref{fig:1} shows traffic load at four transfer hubs i.e. sum of edge flows at the hub of the network before and after adding new routes. We can see that the capacity constraints are respected and the load decreases as more routes are added indicating better distribution of traffic flows.
+
+Figure \ref{fig:2} shows the revenue generated by the government vs the average cost incurred by commuters as routes were added in different orders. We can see that the order in which routes are added did not have a significant impact on the average cost or Revenue generated.
+
+Figure \ref{fig:3} shows a scatter plot of the revenue generated by the government vs the average cost incurred by commuters for different parameters settings. Changing parameters do not seem to have any major impact.
+
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{example-image}
-    \caption{Revenue Generated vs Avg commute time}
+    \caption{Traffic Load at 4 Major Transfer Hubs: From left to right as more new routes are added to the network}
     \label{fig:1}
 \end{figure}
 
@@ -232,6 +244,13 @@ Revenue Generated vs Avg commute time -- Revenue Generated/ Avg Cost time w.r.t 
     \includegraphics[width=0.8\linewidth]{example-image}
     \caption{Revenue Generated/ Avg Cost time w.r.t order adding lines}
     \label{fig:2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{example-image}
+    \caption{Revenue Generated/ Avg Cost time w.r.t changing parameters}
+    \label{fig:3}
 \end{figure}
 
 

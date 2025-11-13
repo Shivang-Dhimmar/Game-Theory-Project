@@ -12,45 +12,45 @@ Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty author in z3_user_guide
-You've used 8 entries,
+You've used 9 entries,
             5945 wiz_defined-function locations,
-            1394 strings with 16629 characters,
-and the built_in function-call counts, 9360 in all, are:
-= -- 1370
-> -- 236
+            1398 strings with 16821 characters,
+and the built_in function-call counts, 10109 in all, are:
+= -- 1453
+> -- 256
 < -- 0
-+ -- 76
-- -- 88
-* -- 598
-:= -- 854
-add.period$ -- 40
-call.type$ -- 8
-change.case$ -- 47
-chr.to.int$ -- 8
-cite$ -- 9
-duplicate$ -- 818
-empty$ -- 572
-format.name$ -- 108
-if$ -- 2337
++ -- 81
+- -- 96
+* -- 638
+:= -- 940
+add.period$ -- 45
+call.type$ -- 9
+change.case$ -- 52
+chr.to.int$ -- 9
+cite$ -- 10
+duplicate$ -- 889
+empty$ -- 623
+format.name$ -- 116
+if$ -- 2498
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 25
-newline$ -- 133
-num.names$ -- 56
-pop$ -- 245
+newline$ -- 145
+num.names$ -- 64
+pop$ -- 267
 preamble$ -- 1
-purify$ -- 119
+purify$ -- 133
 quote$ -- 0
-skip$ -- 305
+skip$ -- 334
 stack$ -- 0
-substring$ -- 764
-swap$ -- 101
+substring$ -- 819
+swap$ -- 106
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 170
+type$ -- 200
 warning$ -- 1
-while$ -- 64
+while$ -- 72
 width$ -- 0
-write$ -- 204
+write$ -- 224
 (There was 1 warning)
