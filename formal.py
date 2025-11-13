@@ -5,7 +5,8 @@ from collections import defaultdict
 import random
 
 random.seed(42)
-
+multigraph_edges = None
+traffic = None
 
 def solve_traffic_equilibrium(nodes, edges, commodities):
     """
@@ -154,10 +155,6 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
 
 
 def solve_for_one_network():
-   with open('network.json', 'r') as f:
-    data = json.load(f)
-    multigraph_edges = data["edges"]
-    traffic = data["traffic"]
     nodes = []
     useful_edges = []
     for i, j, k in multigraph_edges:
@@ -304,6 +301,27 @@ def solve_for_one_network():
     else:
         print("\n\nNo solution found. The safety limits are too strict.")
     
+def read_from_file():
+    global multigraph_edges,traffic
+    with open('network.json', 'r') as f:
+        data = json.load(f)
+        multigraph_edges = data["edges"]
+        traffic = data["traffic"]
 
+read_from_file()
 solve_for_one_network()
 
+while True:
+    print("\nAdd a new metro line (or press Enter to exit)")
+    src = input("Source station: ").strip()
+    if src == "":
+        print("Exiting simulation.")
+        break
+    dst = input("Destination station: ").strip()
+    color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
+
+    multigraph_edges.append((src, dst, color))
+
+    print(f"\nAdded new metro line: {src} <-> {dst} ({color})")
+    print("Recomputing equilibrium with updated network...")
+    solve_for_one_network()
