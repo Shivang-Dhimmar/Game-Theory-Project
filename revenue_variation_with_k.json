@@ -166,34 +166,126 @@
       150
     ]
   ],
-  "results": [
+  "edges": [
+    [
+      "Dakshineshwar",
+      "Baranagar",
+      "blue"
+    ],
+    [
+      "Baranagar",
+      "Noapara",
+      "blue"
+    ],
+    [
+      "Noapara",
+      "Dum Dum",
+      "blue"
+    ],
+    [
+      "Dum Dum",
+      "Esplanade",
+      "blue"
+    ],
+    [
+      "Esplanade",
+      "Park Street",
+      "blue"
+    ],
+    [
+      "Park Street",
+      "Rabinder Sarobar",
+      "blue"
+    ],
+    [
+      "Rabinder Sarobar",
+      "Kavi Subhash",
+      "blue"
+    ],
+    [
+      "Howrah Maidan",
+      "Sealdah",
+      "green"
+    ],
+    [
+      "Sealdah",
+      "Esplanade",
+      "green"
+    ],
+    [
+      "Esplanade",
+      "Salt Lake",
+      "green"
+    ],
+    [
+      "Majherhat",
+      "Diamond Park",
+      "purple"
+    ],
+    [
+      "Diamond Park",
+      "Park Street",
+      "purple"
+    ],
+    [
+      "Park Street",
+      "Esplanade",
+      "purple"
+    ],
+    [
+      "Noapara",
+      "Barasat",
+      "yellow"
+    ],
+    [
+      "Baranagar",
+      "Mangal pandey",
+      "pink"
+    ],
+    [
+      "Kavi Subhash",
+      "Balygunj",
+      "orange"
+    ],
+    [
+      "Balygunj",
+      "Salt Lake",
+      "orange"
+    ],
+    [
+      "Salt Lake",
+      "Jai Hind",
+      "orange"
+    ]
+  ],
+  "experiments": [
     {
       "k": 0.1,
-      "revenue": 9684050.0
+      "revenue": 4028850.0
     },
     {
       "k": 0.5,
-      "revenue": 11913150.0
+      "revenue": 8034000.0
     },
     {
       "k": 1,
-      "revenue": 18014050.0
+      "revenue": 11739950.0
     },
     {
       "k": 1.5,
-      "revenue": 23491550.0
+      "revenue": 15709050.0
     },
     {
       "k": 2,
-      "revenue": 29213350.0
+      "revenue": 20027150.0
     },
     {
       "k": 5,
-      "revenue": 54106750.0
+      "revenue": 47660350.0
     },
     {
       "k": 10,
-      "revenue": 95997450.0
+      "revenue": 90275050.0
     }
   ]
 }
