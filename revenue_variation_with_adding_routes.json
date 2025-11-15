@@ -170,92 +170,110 @@
         [
             "Dakshineshwar",
             "Baranagar",
-            "blue"
+            "blue",
+            1.77
         ],
         [
             "Baranagar",
             "Noapara",
-            "blue"
+            "blue",
+            2.35
         ],
         [
             "Noapara",
             "Dum Dum",
-            "blue"
+            "blue",
+            2.16
         ],
         [
             "Dum Dum",
             "Esplanade",
-            "blue"
+            "blue",
+            8.75
         ],
         [
             "Esplanade",
             "Park Street",
-            "blue"
+            "blue",
+            0.863
         ],
         [
             "Park Street",
             "Rabinder Sarobar",
-            "blue"
+            "blue",
+            5.45
         ],
         [
             "Rabinder Sarobar",
             "Kavi Subhash",
-            "blue"
+            "blue",
+            10.2
         ],
         [
             "Howrah Maidan",
             "Sealdah",
-            "green"
+            "green",
+            6.5
         ],
         [
             "Sealdah",
             "Esplanade",
-            "green"
+            "green",
+            3
         ],
         [
             "Esplanade",
             "Salt Lake",
-            "green"
+            "green",
+            6.35
         ],
         [
             "Majherhat",
             "Diamond Park",
-            "purple"
+            "purple",
+            8.06
         ],
         [
             "Diamond Park",
             "Park Street",
-            "purple"
+            "purple",
+            15.4
         ],
         [
             "Park Street",
             "Esplanade",
-            "purple"
+            "purple",
+            0.95
         ],
         [
             "Noapara",
             "Barasat",
-            "yellow"
+            "yellow",
+            15
         ],
         [
             "Baranagar",
             "Mangal pandey",
-            "pink"
+            "pink",
+            13.5
         ],
         [
             "Kavi Subhash",
             "Balygunj",
-            "orange"
+            "orange",
+            6.55
         ],
         [
             "Balygunj",
             "Salt Lake",
-            "orange"
+            "orange",
+            9.3
         ],
         [
             "Salt Lake",
             "Jai Hind",
-            "orange"
+            "orange",
+            19.5
         ]
     ],
     "experiments": [
@@ -268,7 +286,7 @@
                         "src": "Rabinder Sarobar",
                         "dst": "Kavi Subhash"
                     },
-                    "revenue": 7919250.0
+                    "revenue": 5588993.0
                 },
                 {
                     "step": 2,
@@ -276,7 +294,7 @@
                         "src": "Dum Dum",
                         "dst": "Sealdah"
                     },
-                    "revenue": 32607055.56
+                    "revenue": 30702747.75
                 },
                 {
                     "step": 3,
@@ -284,10 +302,10 @@
                         "src": "Majherhat",
                         "dst": "Rabinder Sarobar"
                     },
-                    "revenue": 12904209.14
+                    "revenue": 50669497.0
                 }
             ],
-            "final_revenue": 12904209.14
+            "final_revenue": 50669497.0
         },
         {
             "order_id": 2,
@@ -298,7 +316,7 @@
                         "src": "Rabinder Sarobar",
                         "dst": "Kavi Subhash"
                     },
-                    "revenue": 57737479.19
+                    "revenue": 5588993.0
                 },
                 {
                     "step": 2,
@@ -306,7 +324,7 @@
                         "src": "Majherhat",
                         "dst": "Rabinder Sarobar"
                     },
-                    "revenue": 56504278.28
+                    "revenue": 2436716.0
                 },
                 {
                     "step": 3,
@@ -314,10 +332,10 @@
                         "src": "Dum Dum",
                         "dst": "Sealdah"
                     },
-                    "revenue": 31337572.88
+                    "revenue": 25714570.75
                 }
             ],
-            "final_revenue": 31337572.88
+            "final_revenue": 25714570.75
         },
         {
             "order_id": 3,
@@ -328,7 +346,7 @@
                         "src": "Dum Dum",
                         "dst": "Sealdah"
                     },
-                    "revenue": 52228317.47
+                    "revenue": 25082607.75
                 },
                 {
                     "step": 2,
@@ -336,7 +354,7 @@
                         "src": "Rabinder Sarobar",
                         "dst": "Kavi Subhash"
                     },
-                    "revenue": 71537933.88
+                    "revenue": 25080247.75
                 },
                 {
                     "step": 3,
@@ -344,10 +362,10 @@
                         "src": "Majherhat",
                         "dst": "Rabinder Sarobar"
                     },
-                    "revenue": 20133472.0
+                    "revenue": 27532746.29
                 }
             ],
-            "final_revenue": 20133472.0
+            "final_revenue": 27532746.29
         },
         {
             "order_id": 4,
@@ -358,7 +376,7 @@
                         "src": "Dum Dum",
                         "dst": "Sealdah"
                     },
-                    "revenue": 32242625.0
+                    "revenue": 30705107.75
                 },
                 {
                     "step": 2,
@@ -366,7 +384,7 @@
                         "src": "Majherhat",
                         "dst": "Rabinder Sarobar"
                     },
-                    "revenue": 22450426.06
+                    "revenue": 37483093.37
                 },
                 {
                     "step": 3,
@@ -374,10 +392,10 @@
                         "src": "Rabinder Sarobar",
                         "dst": "Kavi Subhash"
                     },
-                    "revenue": 9999767.22
+                    "revenue": 28444312.88
                 }
             ],
-            "final_revenue": 9999767.22
+            "final_revenue": 28444312.88
         },
         {
             "order_id": 5,
@@ -388,7 +406,7 @@
                         "src": "Majherhat",
                         "dst": "Rabinder Sarobar"
                     },
-                    "revenue": 11374785.81
+                    "revenue": 2439316.0
                 },
                 {
                     "step": 2,
@@ -396,7 +414,7 @@
                         "src": "Rabinder Sarobar",
                         "dst": "Kavi Subhash"
                     },
-                    "revenue": 21054835.25
+                    "revenue": 2436716.0
                 },
                 {
                     "step": 3,
@@ -404,10 +422,10 @@
                         "src": "Dum Dum",
                         "dst": "Sealdah"
                     },
-                    "revenue": 113910600.62
+                    "revenue": 37474390.0
                 }
             ],
-            "final_revenue": 113910600.62
+            "final_revenue": 37474390.0
         },
         {
             "order_id": 6,
@@ -418,7 +436,7 @@
                         "src": "Majherhat",
                         "dst": "Rabinder Sarobar"
                     },
-                    "revenue": 27237931.75
+                    "revenue": 2439316.0
                 },
                 {
                     "step": 2,
@@ -426,7 +444,7 @@
                         "src": "Dum Dum",
                         "dst": "Sealdah"
                     },
-                    "revenue": 41815874.25
+                    "revenue": 38851727.85
                 },
                 {
                     "step": 3,
@@ -434,10 +452,10 @@
                         "src": "Rabinder Sarobar",
                         "dst": "Kavi Subhash"
                     },
-                    "revenue": 86867403.25
+                    "revenue": 37187496.0
                 }
             ],
-            "final_revenue": 86867403.25
+            "final_revenue": 37187496.0
         }
     ]
 }

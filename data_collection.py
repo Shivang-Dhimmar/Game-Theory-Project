@@ -122,8 +122,8 @@ def revenue_variation_with_adding_routes():
         metro_lines = data["edges"]
         init_json(REVENUE_VARIATION_WITH_ROUTE_ADDITION_PATH,commodities,metro_lines)
     routes = [["Rabinder Sarobar", "Kavi Subhash", "blue",10],
-              ["Dum Dum", "Sealdah", "blue",11.10],
-              ["Majherhat","Rabinder Sarobar", "blue",3.95]]
+              ["Dum Dum", "Sealdah", "blue",7],
+              ["Majherhat","Rabinder Sarobar", "blue",3]]
     for order_id, ordering in enumerate(itertools.permutations(routes), start=1):
         read_from_file()
         temp_metro_lines = metro_lines.copy()
