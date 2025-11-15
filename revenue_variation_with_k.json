@@ -170,122 +170,140 @@
     [
       "Dakshineshwar",
       "Baranagar",
-      "blue"
+      "blue",
+      1.77
     ],
     [
       "Baranagar",
       "Noapara",
-      "blue"
+      "blue",
+      2.35
     ],
     [
       "Noapara",
       "Dum Dum",
-      "blue"
+      "blue",
+      2.16
     ],
     [
       "Dum Dum",
       "Esplanade",
-      "blue"
+      "blue",
+      8.75
     ],
     [
       "Esplanade",
       "Park Street",
-      "blue"
+      "blue",
+      0.863
     ],
     [
       "Park Street",
       "Rabinder Sarobar",
-      "blue"
+      "blue",
+      5.45
     ],
     [
       "Rabinder Sarobar",
       "Kavi Subhash",
-      "blue"
+      "blue",
+      10.2
     ],
     [
       "Howrah Maidan",
       "Sealdah",
-      "green"
+      "green",
+      6.5
     ],
     [
       "Sealdah",
       "Esplanade",
-      "green"
+      "green",
+      3
     ],
     [
       "Esplanade",
       "Salt Lake",
-      "green"
+      "green",
+      6.35
     ],
     [
       "Majherhat",
       "Diamond Park",
-      "purple"
+      "purple",
+      8.06
     ],
     [
       "Diamond Park",
       "Park Street",
-      "purple"
+      "purple",
+      15.4
     ],
     [
       "Park Street",
       "Esplanade",
-      "purple"
+      "purple",
+      0.95
     ],
     [
       "Noapara",
       "Barasat",
-      "yellow"
+      "yellow",
+      15
     ],
     [
       "Baranagar",
       "Mangal pandey",
-      "pink"
+      "pink",
+      13.5
     ],
     [
       "Kavi Subhash",
       "Balygunj",
-      "orange"
+      "orange",
+      6.55
     ],
     [
       "Balygunj",
       "Salt Lake",
-      "orange"
+      "orange",
+      9.3
     ],
     [
       "Salt Lake",
       "Jai Hind",
-      "orange"
+      "orange",
+      19.5
     ]
   ],
   "experiments": [
     {
       "k": 0.1,
-      "revenue": 4028850.0
+      "revenue": 2081693.0
     },
     {
       "k": 0.5,
-      "revenue": 8034000.0
+      "revenue": 5591693.0
     },
     {
       "k": 1,
-      "revenue": 11739950.0
+      "revenue": 9979193.0
     },
     {
       "k": 1.5,
-      "revenue": 15709050.0
+      "revenue": 14366693.0
     },
     {
       "k": 2,
-      "revenue": 20027150.0
+      "revenue": 18754193.0
     },
     {
       "k": 5,
-      "revenue": 47660350.0
+      "revenue": 45079193.0
     },
     {
       "k": 10,
-      "revenue": 90275050.0
+      "revenue": 88954193.0
     }
   ]
 }
