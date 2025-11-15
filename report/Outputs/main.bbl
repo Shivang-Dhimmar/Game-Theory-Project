@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -58,9 +58,21 @@
 \showDOI{\tempurl}
 
 
-\bibitem[\protect\citeauthoryear{{Metro Railway Kolkata}}{{Metro Railway Kolkata}}{2025}]%
+\bibitem[\protect\citeauthoryear{{Metro Railway Kolkata}}{{Metro Railway Kolkata}}{2025a}]%
+        {kolkata_metro_footfall2025}
+\bibfield{author}{\bibinfo{person}{{Metro Railway Kolkata}}.} \bibinfo{year}{2025}\natexlab{a}.
+\newblock \bibinfo{title}{Kolkata Metro sets new record ..}
+\newblock
+\newblock
+\urldef\tempurl%
+\url{@misc{kolkata_metro_footfall2025, title = {Kolkata Metro sets new record ..}, url = {https://mtp.indianrailways.gov.in/view_section.jsp?fontColor=black&backgroundColor=LIGHTSTEELBLUE&lang=0&id=0,1}, urldate = {2025-11-10}, author = {{The Hindu}}, month = sep, year = {2025}, }}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{{Metro Railway Kolkata}}{{Metro Railway Kolkata}}{2025b}]%
         {metro_railway_kolkata_metro_2025}
-\bibfield{author}{\bibinfo{person}{{Metro Railway Kolkata}}.} \bibinfo{year}{2025}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{{Metro Railway Kolkata}}.} \bibinfo{year}{2025}\natexlab{b}.
 \newblock \bibinfo{title}{Metro {Railway}, {Kolkata}}.
 \newblock
 \newblock
