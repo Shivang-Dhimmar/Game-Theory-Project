@@ -121,14 +121,16 @@ def revenue_variation_with_adding_routes():
         commodities = data["traffic"]
         metro_lines = data["edges"]
         init_json(REVENUE_VARIATION_WITH_ROUTE_ADDITION_PATH,commodities,metro_lines)
-    routes = [["Rabinder Sarobar", "Kavi Subhash", "blue"],
-              ["Dum Dum", "Sealdah", "blue"],
-              ["Majherhat","Rabinder Sarobar", "blue"]]
+    routes = [["Rabinder Sarobar", "Kavi Subhash", "blue",10],
+              ["Dum Dum", "Sealdah", "blue",11.10],
+              ["Majherhat","Rabinder Sarobar", "blue",3.95]]
     for order_id, ordering in enumerate(itertools.permutations(routes), start=1):
         read_from_file()
+        temp_metro_lines = metro_lines.copy()
+       
         for i in range(3):
-            metro_lines.append([ordering[i][0], ordering[i][1], ordering[i][2]])
-            set_multigraph_edges(metro_lines)
+            temp_metro_lines.append(ordering[i])
+            set_multigraph_edges(temp_metro_lines)
             set_k(0.5)
             solution = solve_for_one_network()
             add_revenue_route(order_id,i+1,ordering[i][0],ordering[i][1],solution)

@@ -155,15 +155,15 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
         return None
 
 def solve_for_one_network():
-    global useful_edges,multigraph_edges
+    global useful_edges,multigraph_edges,K,traffic
     nodes = []
     useful_edges = []
-    for i, j, k in multigraph_edges:
+    for i, j, k,distance in multigraph_edges:
         attr = {
             "k": K,
             "capacity": 1e5,
             "price": None,
-            "distance": random.randint(2, 30)
+            "distance": distance
         }
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
@@ -180,12 +180,12 @@ def solve_for_one_network():
         mid = (low + high) // 2
         nodes = []
         useful_edges = []
-        for i, j, k in multigraph_edges:
+        for i, j, k,distance in multigraph_edges:
             attr = {
                 "k": K,
                 "capacity": mid,
                 "price": None,
-                "distance": random.randint(2, 30)
+                "distance": distance
             }
             useful_edges.append((i, j, attr))
             useful_edges.append((j, i, attr))
@@ -207,12 +207,12 @@ def solve_for_one_network():
     # run with the minimal capacity
     nodes = []
     useful_edges = []
-    for i, j, k in multigraph_edges:
+    for i, j, k,distance in multigraph_edges:
         attr = {
             "k": K,
             "capacity": minimal_capacity,
             "price": None,
-            "distance": random.randint(2, 30)
+            "distance": distance
         }
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
@@ -330,11 +330,11 @@ if __name__=="__main__":
             print("Exiting simulation.")
             break
         dst = input("Destination station: ").strip()
-        color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
+        # color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
+        distance = int(input("Enter the metro line lenght(in Km): ").strip())
+        multigraph_edges.append([src, dst, "Blue",distance])
 
-        multigraph_edges.append([src, dst, color])
-
-        print(f"\nAdded new metro line: {src} <-> {dst} ({color})")
+        print(f"\nAdded new metro line: {src} <-> {dst} Lenght:{distance} KM)")
         print("Recomputing equilibrium with updated network...")
         solution = solve_for_one_network()
         compute_revenue(solution)
