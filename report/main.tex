@@ -73,7 +73,7 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 29 -- June 2, 2026
 \begin{abstract}
 Rapid urbanisation has led to increased investments by governments in developing rapid transit systems like metros/ trams. They help decrease strain on the existing transport network of a city. However, naively setting prices for these new routes can lead to congestion as they enable alternate routes to the commuters to reach their destinations. In this work, we study how to set prices for upcoming routes of a metro network, while also staying within the capacity constraints of the system. Our aim was to build tools that would help decision makers set prices while also balancing the tradeoffs involved.
 
-We used game theory to reason about traffic load distribution at equilibrium. We used Wardrop's principles, which state that, at equilibrium, no commuter can reduce their travel cost by unilaterally changing routes, to build a tool for setting prices for upcoming routes in a general transport network. We ran experiments on a model of the Kolkata metro - one of the oldest rapid transit systems in the country - to suggest prices for its upcoming extensions. We show how the capacity constraints are respected and also discuss how our tool can be extended to balance other tradeoffs such as maximizing revenue and improving social welfare.
+We used game theory to reason about traffic load distribution at equilibrium. We used Wardrop's principles, which state that, at equilibrium, no commuter can reduce their travel cost by unilaterally changing routes, to build a tool for setting prices for upcoming routes in a general transport network. We ran experiments on a model of the Kolkata metro - one of the oldest rapid transit systems in the country - to suggest prices for its upcoming extensions. We show how the capacity constraints are respected and also discuss how our tool can be extended to balance some other tradeoffs.
 
 \end{abstract}
 
@@ -122,20 +122,20 @@ As road congestion and traffic problems continue to worsen, governments across t
 \end{figure}
 
 The two most crucial factors influencing a commuter's preferences between alternative routes are the total price of the route and the congestion on it. 
-Consider three cities A, B and C connected via metro lines as shown in Figure \ref{fig:naivePricing}. If say \( 10 \) and $5$ be the number of commuter travelling daily from A to C and from B to C respectively, while the capacity of the routes are 5 each and the ticket prices are $10$ and $5$. Suppose a new metro line AB now opens with a capacity of $10$. If the route AB is priced less than $5$ then all $10$ commuters from A to C will prefer the route A-B-C leading to exceeding capacity on the route B-C. On the other hand if the price is set too high then none of the commuters will use the new route, wasting public resources. 
-Hence a naive approach of pricing based on demand surveys between source-destination pairs without considering how the flow redistributes may lead to exceeding capacity or underutilisation on certain routes of the network.
+Consider three cities A, B and C connected via metro lines as shown in Figure \ref{fig:naivePricing}. If say \( 10 \) and $5$ be the number of commuter travelling daily from A to C and from B to C respectively, while the capacity of the routes are 5 each and the ticket prices are $10$ and $5$. Suppose a new metro line AB now opens with a capacity of $10$. If the route AB is priced less than $5$ then all $10$ commuters from A to C will prefer the route A-B-C leading to execeding capacity on the route B-C. On the other hand if the price is set too high then none of the commuters will use the new route, wasting public resources. 
+Hence a naive approach of pricing based on demand surveys between source-destination pairs without considering how the flow redistributes may lead to execeding the capacity or under-utilisation of resources on certain routes of the network.
 
-Congestion is another factor that influences commuter preferences over the routes. Highly congested routes would be avoided by commuters even if they are cheaper. Although they might still prefer metro over buses (or newer metro over older) given same congestion and price incurred on both the routes. To capture this, we model the cost incurred by a commuter on a direct route to be \(kx + p \) where \(k\) is the congestion factor of the route, \(x\) the number of commuters using the route and \(p\) is the price of using the route. Each commuter would then choose the route that incurrs them the least net cost. 
+Congestion is another factor that influences commuter preferences over the routes. Highly congested routes would be avoided by commuters even if they are cheaper. Although they might still prefer metro over buses (or newer metro over older) given same congestion and price incurred on both the routes. To capture this, we model the cost incurred by a commuter on a direct route to be \(kx + p \) where \(k\) is the congestion factor of the route, \(x\) the number of commuters using the route and \(p\) is the price of using the route. Each commuter would then choose the route that incurs them the least net cost. 
 
 The prices must thus be set so that all routes operate within capacity and no resources are underutilised. Although the government may generate revenue, the economic activity enabled by the network far outweights the cost to maintainan them. Thus for social welfare the total cost incurred by the commuters must also be kept low. 
 
 Game theoretic ideas have been proposed as early as 1950s by Wardrop \cite[p. 344]{wardrop_road_1952} to study distribtuion of traffic flows between alternative routes of a network. Wardrop's principle can be stated as follows:
 
 At equillibrium, the cost incurred by all used routes between a source-destination pair is equal and less than the cost that would be incurred by using any unused route. Thus a new commuter should be indifferent between all used routes.
-Using this principle we model the problem of setting prices for new routes as a feasibility problem. The constraints being to operate within capacity and at equilibrium follow wardrop's principle. Under a feasible pricing an additional objective being to maximise the social welfare of the commuters.
+Using this principle we model the problem of setting prices for new routes as a feasibility problem. The constraints being to operate within capacity and at equilibrium follow wardrop's principle. Among such feasible pricing of routes we would prefer the ones that bring greater social welfare for the commuters.
 
 We chose Kolkata metro network for our experiments. Kolkata metro is one of the oldest metro system in India with multiple extensions planned in the near future. It also caters to both rich and poor stratas of the society covering 
-most parts of the city. This gives us a good oppurtunity to predict the impact of pricing on congestion, the average cost incurred by the commuters and the revenue generated by the government. We also study the impact of the order in 
+most parts of the city. This gives us a good oppurtunity to predict the impact of pricing on congestion, the average cost incured by the commuters and the revenue generated by the government. We also study the impact of the order in 
 which the new routes are added.
 
 While the focus of the current work is on maximising social welfare, we also suggest how our tool can be extended for other considerations. Sometimes generating a minimum revenue is required to cover operating costs. Not all neighbourhoods are equally sensitive to prices, and ensuring fairness in pricing for poorer commuters is important.
@@ -147,13 +147,13 @@ on pricing of transport networks. In Section \ref{sec:kolkataMetro} we track the
 \subsection{Related Work}
 \label{sec:related}
 
-In this section we will discuss some of the previous work related to dynamic pricing of transportation routes, managing congestion in urban transit systems, and contrast them with our approach.
+In this section we will discuss some of the previous work related to dynamic pricing of transportation routes and managing congestion in urban transit systems, and contrast them with our approach.
 
 In most works we found that the authors were more interested in sytems that change prices in real time, based on the 
-real time demand in the systems. Such methods though not applicable in pricing upcoming projects in a metro route. First of all good measures of real time demand is often not available and secondly changing prices frequently could affect a large number of commuters. Metro prices are rarely updated, hence any pricing of upcoming routes must be done in planning with future demands and current system capacities. Unlike a few other works we have also kept capacity static for a direct route. Capacity in a metro route is dependent on the number of trains running on that line which are usually kept static unless expecting peak demands during holiday season. As we will see this change can be easily incorporated in our model and is different from a car pooling or freight networks where the fleet has more freedom to move to different nodes and hence capacitities of a direct route continously keep changing. 
+real time demand in the systems. Such methods though are not applicable in pricing upcoming projects in a metro route. First of all good measures of real time demand is often not available and secondly changing prices frequently could affect a large number of commuters. Metro prices are rarely updated, hence any pricing of upcoming routes must be done in planning with future demands and current system capacities. Unlike a few other works we have also kept capacity static for a direct route. Capacity in a metro route is dependent on the number of trains running on that line which are usually kept static unless expecting peak demands during holiday season. As we will see this change can be easily incorporated in our model and is different from a car pooling or freight networks where the fleet has more freedom to move to different nodes and hence capacitities of a direct route continously keep changing. 
 
 Traffic flow distribution when commuters can choose between alternative routes was studied as early as 1950's. \cite{wardrop_correspondence_1952,wardrop_road_1952}. They build a strong theoretic framework for the distribution of vehicular speeds and distribution of flows between alternative routes in a road network. While the author focusses 
-more towards road traffic with total journey time being the only cost influencing the choices of commuters. We found the principles developed generally helpful and hence was our main reference for building our tool. In words these can be stated as follows: 
+more towards road traffic with total journey time being the only cost influencing the choices of commuters. We found the principles developed generally helpful and hence was our main reference for building our tool. In words these can be stated as follows: At equillibrium, the cost incurred by all used routes between a source-destination pair is equal and less than the cost that would be incurred by using any unused route. Thus a new commuter should be indifferent between all used routes.
 
 We do a similar analysis, with cost being replaced by a linear combination of a congestion factor and ticket prices, instead of journey time. The author also studied the effects in theory and practice for various other interventions like road width, layout design and traffic control signals to influence commuter preferences. We control only for the prices of upcoming routes, and speculate the predictions from our tool should also follow in practice.
 
@@ -164,7 +164,7 @@ Hintermann, Beat et al.~\cite{hintermann_beat_et_al_pigovian_2025} focus on prac
 Liu et al.~\cite{liu_research_2015} pose pricing of a whole network as a three party game, with the players being, the government, the corporations running the network (say metro), and the commuters. The commuters want better service at cheaper prices, the government wants social welfare, and the corporation wants to cover the running costs.
 They do not consider pricing of individual routes like us but the whole network. The pricing are dynamic in the sense that they change from peak to non-peak hours. 
 
-Mozafari et al.~\cite{mozafari_dynamic_2015} study freight networks, operated by few monopolistic players. Here the choices are not between alternative routes but between how to allocate ships across nodes based on current distribution, competititor pricing and demand of goods. Unlike our case, as ships move from a node to another the capacity of edges incident on this node decreases as fewer ships available to transfer goods. We do not model such an assumption as routes are predetermined for a metro and hence capacity doess not change.  
+Mozafari et al.~\cite{mozafari_dynamic_2015} study freight networks, operated by few monopolistic players. Here the choices are not between alternative routes but between how to allocate ships across nodes based on current distribution, competititor pricing and demand of goods. Unlike our case, as ships move from a node to another the capacity of edges incident on this node decreases as fewer ships are available to transfer goods. We do not model such an assumption as routes are predetermined for a metro and hence capacity does not change.  
 
 Zhang et al.~\cite{zhang_optimal_2024} study how preferences between travel modes (bus/metro) propogate through a social network. They do not study under the alternative routes but alternative modes of transport network between a source and destination and the pricing decision of the operators must change dynamically inorder to beat other networks while also keeping its current commuters happy as this gets learned via the social network. 
 
@@ -176,22 +176,16 @@ In the next section we will take a look at the Kolkata metro system and how it h
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{example-image}
+    \includegraphics[width=0.8\linewidth]{images/SYSTEM MAP.jpg}
     \caption{Kolkata Metro Map with Upcoming Extension}
     \label{fig:4}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{example-image}
-    \caption{Existing Fare Card}
-    \label{fig:3}
-\end{figure}
 
 Kolkata metro is one of India's Oldest Metro Sytem\cite{metro_railway_kolkata_metro_2025}. As you can see in Fig.~\ref{fig:4}. It covers all the major industrial and residential hubs of the city, and is still expanding towards the outskirts. The Blue line runs from Dakshineswar to Kavi Subhash along North-South. 
 The East-West Green line connecting Howrah Maidan and Salt Lake, covers many of the important tourist destinations of the city. The purple and orange are partially operational. 
 
-It caters to a large section of the society bt offering cheaper but good services. The minimum fare is Rs. 5, with prices increasing with distance. It is estimated to serve upto 8 lakh commuters by the end of this year\cite{kolkata_metro_footfall2025}. 
+It caters to a large section of the society by offering cheaper but good services. The minimum fare is Rs. 5, with prices increasing with distance. It is estimated to serve upto 8 lakh commuters by the end of this year\cite{kolkata_metro_footfall2025}. 
 
 The Key Residential Hubs of the city are Dakshineswar and Joka, while Salt Lake is a key commercial center.
 
@@ -222,51 +216,51 @@ When a new line is added to the network, we find for each demand \(D_i\) a list 
 Here (C1) follows from the definition of flow on edges, (C2) ensures that no edge exceeds its capacity, (C3) ensures that all commuters are take some Route, (C4) and (C5) follow wardrop's principles that at equillibrium no commuter can reduce their cost by unilateral deviation.
 
 We find an assignment of variables that respects feasibility of constraints (C1) - (C5), 
-To ensure social welfare, we need to track the following function:
+To ensure social welfare, we track the following function:
 \begin{equation}
     F =  \sum_{D_i \in \mathcal{D}} \sum_{R \in \mathcal{R}_i} f_R \left( \sum_{e \in R} ((e.k)f_e + e.price ) \right)
-\end{equation}.
-which is the totat cost of all commuters.
+\end{equation}
+which is the totat cost of all commuters in the network.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Experiments and Results}
 \label{sec:ExpResults}
 
-We used publicly available including Google Maps and Wikipedia to estimate the parameters needed to build our model of Kolkata Metro as described in Section \ref{sec:Model}. 
+We used publicly available data including Google Maps and Wikipedia to estimate the parameters needed to build our model of Kolkata Metro as described in Section \ref{sec:Model}. 
 The demand for direct routes between hubs were set based on population density, availability of public utilities like airports, hospitals nearby and location of offices/industries. Each direct route was thus classified High / Medium / Low demand and the demands were set randomly within a range for each class so that the total demand nearly matched the reported daily ridership of Kolkata metro \cite{metro_railway_kolkata_metro_2025}.
-$k$ was chosen to be 2 for all bus routes and 1 for metro lines capturing the preferences of commuters. We also change values of $k$, and check the robustness of the solution. The capacity of each route was set based on current ridership on the line divided by the number of stations on the line, while for bus routes it was kept constant for all direct routes. We used exsiting fare charts to set the prices for the existing routes. 
+$k$ was chosen to be 2 for all bus routes and 1 for metro lines capturing the preferences of commuters. We also change values of $k$, and check the robustness of the solution. The capacity of each route was set based on current ridership on the line divided by the number of stations on the line, while for bus routes it was kept constant for all direct routes. We used exsisting fare charts to set the prices for the existing routes. 
 
 Z3 solver \cite{z3_user_guide} was used to encode the constraints C1 - C5 and set a very high price for all new routes. We then used binary search to find the minimum price at which the constraints were satisfed. Z3 is a general purpose SMT solver and was able to check satisfyiablity of our constraints in reasonable time.
 To limit the number of constraints, we pruned some of the routes, if necessary. This is reasonable since since every transfer takes away valuable time of the commuters.
 We also perform a sensitivity analysis by changing the parameters like demand, capacity and congestion factor by small amounts to see how they impact the results.
 More details can be found in the  \href{https://github.com/Arghya-AB/Game-Theory-Project}{code repository}. 
 
-Figure \ref{fig:1} shows traffic load at four transfer hubs i.e. sum of edge flows at the hub of the network before and after adding new routes. We can see that the capacity constraints are respected and the load decreases as more routes are added indicating better distribution of traffic flows.
+% Figure \ref{fig:1} shows traffic load at four transfer hubs i.e. sum of edge flows at the hub of the network before and after adding new routes. We can see that the capacity constraints are respected and the load decreases as more routes are added indicating better distribution of traffic flows.
 
-Figure \ref{fig:2} shows the revenue generated by the government vs the average cost incurred by commuters as routes were added in different orders. We can see that the order in which routes are added did not have a significant impact on the average cost or Revenue generated.
+Figure \ref{fig:2} shows the revenue generated by the government vs the average cost incurred by commuters as routes were added in different orders. We can see that the order in which routes are added did have a significant impact on the average cost and Revenue generated.
 
-Figure \ref{fig:3} shows a scatter plot of the revenue generated by the government vs the average cost incurred by commuters for different parameters settings. Changing parameters do not seem to have any major impact.
+Figure \ref{fig:3} shows a scatter plot of the revenue generated by the government vs different $k$. $k$ seems to have a linear increase in Revenue. We are not certain of the reason and conjecture it being an artifact of our solver.
 
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.8\linewidth]{example-image}
+%     \caption{Traffic Load at 4 Major Transfer Hubs: From left to right as more new routes are added to the network}
+%     \label{fig:1}
+% \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{example-image}
-    \caption{Traffic Load at 4 Major Transfer Hubs: From left to right as more new routes are added to the network}
-    \label{fig:1}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{example-image}
+    \includegraphics[width=\linewidth]{images/revenue_variation.png}
     \caption{Revenue Generated/ Avg Cost time w.r.t order adding lines}
     \label{fig:2}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{example-image}
-    \caption{Revenue Generated/ Avg Cost time w.r.t changing parameters}
+    \includegraphics[width=0.8\linewidth]{images/revenue_vs_k.png}
+    \caption{Revenue Generated w.r.t changing parameter $k$}
     \label{fig:3}
 \end{figure}
 
@@ -276,12 +270,12 @@ Figure \ref{fig:3} shows a scatter plot of the revenue generated by the governme
 \label{sec:Conclusion}
 
 We have seen how our tool gives a principled approach for pricing new routes under Capacity Constraints. We also demonstrateed its usability for pricing the
-upcoming extensions on the kolkata metro network. We conclude that our tool helps to reduce the average cost of a commuter without losing a lot of revenue for the government. It also respects the capacity constraints of the existing and the new routes.It can also help in deciding the order of adding new routes. We also incorporate other transport networks in the system easily. One of the key drawbacks of our system is that its not price sensitive for the rural neighbourhoods, as in we can not guarantee that the model will not set high fares for routes in poorer neighbourhoods. Also sometimes the pricing decision depends on external factors like availability of parking spots near certain hubs etc. Lets see how to integrate them in a future work.
+upcoming extensions on the kolkata metro network. We conclude that our tool helps to reduce the average cost of a commuter without losing a lot of revenue for the government. It also respects the capacity constraints of the existing and the new routes.It can also help in deciding the order of adding new routes. We can also incorporate other transport networks in the system easily. One of the key drawbacks of our system is that its not price sensitive for the rural neighbourhoods, as in we can not guarantee that the model will not set high fares for routes taken by the working class as they might be more sensitive towards price than the congestion factor. Also sometimes the pricing decision depends on external factors like availability of parking spots near certain hubs etc. Lets see how to integrate them in a future work.
 
 \subsection{Future Work}
 
 We claim most of the above extensions can be solved by setting the right objective and 
-adjusting the parameters like $k$. Say for instance for decreasing $k$ in edges incident to hubs with poor parking we can incentivise commuters to take metro. Similarly we can set objective function to generate revenue along with decreasing total costs of commuters. For fairness we can measure cost w.r.t the different groups and decrease a weighted sum of costs. We leave these for the future work. 
+adjusting the parameters like $k$. Say for instance by decreasing $k$ in edges incident to hubs with poor parking we can incentivise commuters to take metro. Similarly we can set an objective function to generate revenue along with decreasing total costs of commuters. For fairness we can measure cost w.r.t the different groups and try to decrease a weighted sum of costs. We leave these for a future work. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -302,7 +296,7 @@ adjusting the parameters like $k$. Say for instance for decreasing $k$ in edges 
 %%% metadata as well as the consistent spelling of the heading.
 
 \begin{acks}
-% Deeksha and Prof. 
+We acknowledge the inputs from Deeksha and Prof. Swaprava Nath 
 \end{acks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
