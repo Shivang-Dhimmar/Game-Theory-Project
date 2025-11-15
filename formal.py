@@ -7,6 +7,8 @@ import random
 random.seed(42)
 multigraph_edges = None
 traffic = None
+useful_edges = []
+K = 0.1
 
 def solve_traffic_equilibrium(nodes, edges, commodities):
     """
@@ -152,17 +154,16 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
     else:
         return None
 
-
-
 def solve_for_one_network():
+    global useful_edges,multigraph_edges
     nodes = []
     useful_edges = []
     for i, j, k in multigraph_edges:
         attr = {
-            "k": 0.1,
+            "k": K,
             "capacity": 1e5,
             "price": None,
-            "distance": random.randint(5, 100)
+            "distance": random.randint(2, 30)
         }
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
@@ -181,10 +182,10 @@ def solve_for_one_network():
         useful_edges = []
         for i, j, k in multigraph_edges:
             attr = {
-                "k": 0.1,
+                "k": K,
                 "capacity": mid,
                 "price": None,
-                "distance": random.randint(5, 100)
+                "distance": random.randint(2, 30)
             }
             useful_edges.append((i, j, attr))
             useful_edges.append((j, i, attr))
@@ -208,10 +209,10 @@ def solve_for_one_network():
     useful_edges = []
     for i, j, k in multigraph_edges:
         attr = {
-            "k": 0.1,
+            "k": K,
             "capacity": minimal_capacity,
             "price": None,
-            "distance": random.randint(5, 100)
+            "distance": random.randint(2, 30)
         }
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
@@ -246,7 +247,7 @@ def solve_for_one_network():
             total_flow_for_comm = 0
             
             for path_str, flow_val_str in path_data.items():
-                flow_val = float(flow_val_str)
+                flow_val = float(flow_val_str.replace("?", ""))
                 if flow_val < 1e-6: # Skip paths with no flow
                     continue
 
@@ -259,7 +260,7 @@ def solve_for_one_network():
                     distance = edge_data.get("distance", 0)
                     k = edge_data.get("k", 0)
                     # Get the total flow 'x' on this edge
-                    x = float(solution["edge_flows"][(u, v)])
+                    x = float(solution["edge_flows"][(u, v)].replace("?", ""))
 
                     # Calculate time for this edge: (k * x) + distance
                     edge_time = (k * x) + distance
@@ -278,14 +279,14 @@ def solve_for_one_network():
         # --- END: ADDED CODE FOR AVG TIME CALCULATION ---
         for (u, v), flow in sorted(solution["edge_flows"].items()):
             capacity = G_sol.get_edge_data(u, v).get("capacity", "inf")
-            status = "works" if float(flow) <= capacity else "RIP safety"
+            status = "works" if float(flow.replace("?", "")) <= capacity else "RIP safety"
             print(f"  - Flow on {u}->{v}: {flow} (capacity: {capacity}) -> {status}")
 
         print("\n\nResulting path flows for each commodity:")
         for comm, path_flows in solution["path_flows"].items():
             print(f"  - Commodity {comm}:")
             for path, flow in path_flows.items():
-                if float(flow) > 1e-6:
+                if float(flow.replace("?", "")) > 1e-6:
                     print(f"    - path {path}: flow = {flow}")
 
         print("\n\nEquilibrium costs:")
@@ -297,10 +298,10 @@ def solve_for_one_network():
                 print(f"   - Avg. Time for {comm}: {time}")
         else:
             print("   - No time data calculated.")
-    
     else:
         print("\n\nNo solution found. The safety limits are too strict.")
-    
+    return solution
+
 def read_from_file():
     global multigraph_edges,traffic
     with open('network.json', 'r') as f:
@@ -308,20 +309,32 @@ def read_from_file():
         multigraph_edges = data["edges"]
         traffic = data["traffic"]
 
-read_from_file()
-solve_for_one_network()
+def set_multigraph_edges(edges):
+    global multigraph_edges
+    multigraph_edges = edges
 
-while True:
-    print("\nAdd a new metro line (or press Enter to exit)")
-    src = input("Source station: ").strip()
-    if src == "":
-        print("Exiting simulation.")
-        break
-    dst = input("Destination station: ").strip()
-    color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
+def set_k(k):
+    global K
+    K =k
 
-    multigraph_edges.append((src, dst, color))
+if __name__=="__main__":
+    from data_collection import compute_revenue
+    read_from_file()
+    solution = solve_for_one_network()
+    compute_revenue(solution)
 
-    print(f"\nAdded new metro line: {src} <-> {dst} ({color})")
-    print("Recomputing equilibrium with updated network...")
-    solve_for_one_network()
+    while True:
+        print("\nAdd a new metro line (or press Enter to exit)")
+        src = input("Source station: ").strip()
+        if src == "":
+            print("Exiting simulation.")
+            break
+        dst = input("Destination station: ").strip()
+        color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
+
+        multigraph_edges.append([src, dst, color])
+
+        print(f"\nAdded new metro line: {src} <-> {dst} ({color})")
+        print("Recomputing equilibrium with updated network...")
+        solution = solve_for_one_network()
+        compute_revenue(solution)
