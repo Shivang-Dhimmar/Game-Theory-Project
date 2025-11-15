@@ -1,0 +1,443 @@
+{
+    "commodities": [
+        [
+            "Howrah Maidan",
+            "Sealdah",
+            2000
+        ],
+        [
+            "Dum Dum",
+            "Esplanade",
+            1950
+        ],
+        [
+            "Sealdah",
+            "Esplanade",
+            1900
+        ],
+        [
+            "Dum Dum",
+            "Park Street",
+            1850
+        ],
+        [
+            "Howrah Maidan",
+            "Esplanade",
+            1800
+        ],
+        [
+            "Kavi Subhash",
+            "Esplanade",
+            1750
+        ],
+        [
+            "Kavi Subhash",
+            "Park Street",
+            1700
+        ],
+        [
+            "Salt Lake",
+            "Sealdah",
+            1650
+        ],
+        [
+            "Salt Lake",
+            "Esplanade",
+            1600
+        ],
+        [
+            "Jai Hind",
+            "Howrah Maidan",
+            1550
+        ],
+        [
+            "Jai Hind",
+            "Esplanade",
+            1500
+        ],
+        [
+            "Barasat",
+            "Dum Dum",
+            1300
+        ],
+        [
+            "Barasat",
+            "Esplanade",
+            1250
+        ],
+        [
+            "Dakshineshwar",
+            "Esplanade",
+            1200
+        ],
+        [
+            "Rabinder Sarobar",
+            "Howrah Maidan",
+            1150
+        ],
+        [
+            "Baranagar",
+            "Park Street",
+            1100
+        ],
+        [
+            "Majherhat",
+            "Esplanade",
+            1000
+        ],
+        [
+            "Majherhat",
+            "Park Street",
+            950
+        ],
+        [
+            "Mangal pandey",
+            "Esplanade",
+            900
+        ],
+        [
+            "Balygunj",
+            "Park Street",
+            850
+        ],
+        [
+            "Diamond Park",
+            "Park Street",
+            800
+        ],
+        [
+            "Kavi Subhash",
+            "Balygunj",
+            750
+        ],
+        [
+            "Jai Hind",
+            "Salt Lake",
+            700
+        ],
+        [
+            "Dakshineshwar",
+            "Howrah Maidan",
+            650
+        ],
+        [
+            "Barasat",
+            "Kavi Subhash",
+            600
+        ],
+        [
+            "Majherhat",
+            "Sealdah",
+            550
+        ],
+        [
+            "Diamond Park",
+            "Dum Dum",
+            500
+        ],
+        [
+            "Mangal pandey",
+            "Jai Hind",
+            350
+        ],
+        [
+            "Mangal pandey",
+            "Baranagar",
+            400
+        ],
+        [
+            "Dakshineshwar",
+            "Majherhat",
+            300
+        ],
+        [
+            "Barasat",
+            "Majherhat",
+            250
+        ],
+        [
+            "Rabinder Sarobar",
+            "Balygunj",
+            200
+        ],
+        [
+            "Mangal pandey",
+            "Diamond Park",
+            150
+        ]
+    ],
+    "edges": [
+        [
+            "Dakshineshwar",
+            "Baranagar",
+            "blue"
+        ],
+        [
+            "Baranagar",
+            "Noapara",
+            "blue"
+        ],
+        [
+            "Noapara",
+            "Dum Dum",
+            "blue"
+        ],
+        [
+            "Dum Dum",
+            "Esplanade",
+            "blue"
+        ],
+        [
+            "Esplanade",
+            "Park Street",
+            "blue"
+        ],
+        [
+            "Park Street",
+            "Rabinder Sarobar",
+            "blue"
+        ],
+        [
+            "Rabinder Sarobar",
+            "Kavi Subhash",
+            "blue"
+        ],
+        [
+            "Howrah Maidan",
+            "Sealdah",
+            "green"
+        ],
+        [
+            "Sealdah",
+            "Esplanade",
+            "green"
+        ],
+        [
+            "Esplanade",
+            "Salt Lake",
+            "green"
+        ],
+        [
+            "Majherhat",
+            "Diamond Park",
+            "purple"
+        ],
+        [
+            "Diamond Park",
+            "Park Street",
+            "purple"
+        ],
+        [
+            "Park Street",
+            "Esplanade",
+            "purple"
+        ],
+        [
+            "Noapara",
+            "Barasat",
+            "yellow"
+        ],
+        [
+            "Baranagar",
+            "Mangal pandey",
+            "pink"
+        ],
+        [
+            "Kavi Subhash",
+            "Balygunj",
+            "orange"
+        ],
+        [
+            "Balygunj",
+            "Salt Lake",
+            "orange"
+        ],
+        [
+            "Salt Lake",
+            "Jai Hind",
+            "orange"
+        ]
+    ],
+    "experiments": [
+        {
+            "order_id": 1,
+            "steps": [
+                {
+                    "step": 1,
+                    "added_route": {
+                        "src": "Rabinder Sarobar",
+                        "dst": "Kavi Subhash"
+                    },
+                    "revenue": 6981150.0
+                },
+                {
+                    "step": 2,
+                    "added_route": {
+                        "src": "Dum Dum",
+                        "dst": "Sealdah"
+                    },
+                    "revenue": 31919159.75
+                },
+                {
+                    "step": 3,
+                    "added_route": {
+                        "src": "Majherhat",
+                        "dst": "Rabinder Sarobar"
+                    },
+                    "revenue": 25890344.5
+                }
+            ],
+            "final_revenue": 25890344.5
+        },
+        {
+            "order_id": 2,
+            "steps": [
+                {
+                    "step": 1,
+                    "added_route": {
+                        "src": "Rabinder Sarobar",
+                        "dst": "Kavi Subhash"
+                    },
+                    "revenue": 6981150.0
+                },
+                {
+                    "step": 2,
+                    "added_route": {
+                        "src": "Majherhat",
+                        "dst": "Rabinder Sarobar"
+                    },
+                    "revenue": 3491975.0
+                },
+                {
+                    "step": 3,
+                    "added_route": {
+                        "src": "Dum Dum",
+                        "dst": "Sealdah"
+                    },
+                    "revenue": 48828764.0
+                }
+            ],
+            "final_revenue": 48828764.0
+        },
+        {
+            "order_id": 3,
+            "steps": [
+                {
+                    "step": 1,
+                    "added_route": {
+                        "src": "Dum Dum",
+                        "dst": "Sealdah"
+                    },
+                    "revenue": 32170559.75
+                },
+                {
+                    "step": 2,
+                    "added_route": {
+                        "src": "Rabinder Sarobar",
+                        "dst": "Kavi Subhash"
+                    },
+                    "revenue": 31785459.75
+                },
+                {
+                    "step": 3,
+                    "added_route": {
+                        "src": "Majherhat",
+                        "dst": "Rabinder Sarobar"
+                    },
+                    "revenue": 34715005.75
+                }
+            ],
+            "final_revenue": 34715005.75
+        },
+        {
+            "order_id": 4,
+            "steps": [
+                {
+                    "step": 1,
+                    "added_route": {
+                        "src": "Dum Dum",
+                        "dst": "Sealdah"
+                    },
+                    "revenue": 32170559.75
+                },
+                {
+                    "step": 2,
+                    "added_route": {
+                        "src": "Majherhat",
+                        "dst": "Rabinder Sarobar"
+                    },
+                    "revenue": 41294201.21875
+                },
+                {
+                    "step": 3,
+                    "added_route": {
+                        "src": "Rabinder Sarobar",
+                        "dst": "Kavi Subhash"
+                    },
+                    "revenue": 21869311.0
+                }
+            ],
+            "final_revenue": 21869311.0
+        },
+        {
+            "order_id": 5,
+            "steps": [
+                {
+                    "step": 1,
+                    "added_route": {
+                        "src": "Majherhat",
+                        "dst": "Rabinder Sarobar"
+                    },
+                    "revenue": 3834475.0
+                },
+                {
+                    "step": 2,
+                    "added_route": {
+                        "src": "Rabinder Sarobar",
+                        "dst": "Kavi Subhash"
+                    },
+                    "revenue": 30969075.0
+                },
+                {
+                    "step": 3,
+                    "added_route": {
+                        "src": "Dum Dum",
+                        "dst": "Sealdah"
+                    },
+                    "revenue": 15305430.6875
+                }
+            ],
+            "final_revenue": 15305430.6875
+        },
+        {
+            "order_id": 6,
+            "steps": [
+                {
+                    "step": 1,
+                    "added_route": {
+                        "src": "Majherhat",
+                        "dst": "Rabinder Sarobar"
+                    },
+                    "revenue": 3834475.0
+                },
+                {
+                    "step": 2,
+                    "added_route": {
+                        "src": "Dum Dum",
+                        "dst": "Sealdah"
+                    },
+                    "revenue": 35481375.0
+                },
+                {
+                    "step": 3,
+                    "added_route": {
+                        "src": "Rabinder Saroba",
+                        "dst": "Kavi Subhash"
+                    },
+                    "revenue": 30393949.5
+                }
+            ],
+            "final_revenue": 30393949.5
+        }
+    ]
+}
