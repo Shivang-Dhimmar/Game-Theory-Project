@@ -3,6 +3,7 @@ import itertools
 from geneticalgorithm import geneticalgorithm as ga
 import numpy as np
 
+""" Runs a Genetic Algorithm to optimize traffic flow in a network graph. """
 
 def dijkstra(graph, source, destination):
     distances = {node: float("inf") for node in graph}

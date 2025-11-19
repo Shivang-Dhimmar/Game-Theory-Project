@@ -79,7 +79,7 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
 
         edge_flow_exprs[(u, v)] = Sum(flow_on_edge) if flow_on_edge else Real(0)
 
-    # dd capacity constraints
+    # add capacity constraints
     for u, v, data in G.edges(data=True):
         if "capacity" in data and data["capacity"] != float("inf"):
             solver.add(edge_flow_exprs[(u, v)] <= data["capacity"])
