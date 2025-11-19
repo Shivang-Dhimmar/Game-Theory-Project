@@ -10,6 +10,7 @@ traffic = None
 useful_edges = []
 K = 0.1
 
+
 def solve_traffic_equilibrium(nodes, edges, commodities):
     """
     Tries to apply https://en.wikipedia.org/wiki/John_Glen_Wardrop -> Wardrop equilibria -> Wardrop's First Principle
@@ -41,8 +42,10 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
     for u, v, data in G.edges(data=True):
         if data.get("price") is None:
             p_var = Real(f"p_{u}_{v}")
-            if data.get("distance"):    
-                solver.add(p_var >= data.get("distance")*2.0)  # negative prices too overpowered for this world
+            if data.get("distance"):
+                solver.add(
+                    p_var >= data.get("distance") * 2.0
+                )  # negative prices too overpowered for this world
                 price_vars[(u, v)] = p_var
 
     # create a variable for the flow on every possible path for each commodity
@@ -154,17 +157,13 @@ def solve_traffic_equilibrium(nodes, edges, commodities):
     else:
         return None
 
+
 def solve_for_one_network():
-    global useful_edges,multigraph_edges,K,traffic
+    global useful_edges, multigraph_edges, K, traffic
     nodes = []
     useful_edges = []
-    for i, j, k,distance in multigraph_edges:
-        attr = {
-            "k": K,
-            "capacity": 1e5,
-            "price": None,
-            "distance": distance
-        }
+    for i, j, k, distance in multigraph_edges:
+        attr = {"k": K, "capacity": 1e5, "price": None, "distance": distance}
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
         if i not in nodes:
@@ -180,13 +179,8 @@ def solve_for_one_network():
         mid = (low + high) // 2
         nodes = []
         useful_edges = []
-        for i, j, k,distance in multigraph_edges:
-            attr = {
-                "k": K,
-                "capacity": mid,
-                "price": None,
-                "distance": distance
-            }
+        for i, j, k, distance in multigraph_edges:
+            attr = {"k": K, "capacity": mid, "price": None, "distance": distance}
             useful_edges.append((i, j, attr))
             useful_edges.append((j, i, attr))
             if i not in nodes:
@@ -207,12 +201,12 @@ def solve_for_one_network():
     # run with the minimal capacity
     nodes = []
     useful_edges = []
-    for i, j, k,distance in multigraph_edges:
+    for i, j, k, distance in multigraph_edges:
         attr = {
             "k": K,
             "capacity": minimal_capacity,
             "price": None,
-            "distance": distance
+            "distance": distance,
         }
         useful_edges.append((i, j, attr))
         useful_edges.append((j, i, attr))
@@ -237,18 +231,17 @@ def solve_for_one_network():
 
         # re-create graph to access capacity info
         G_sol = nx.DiGraph()
-        
+
         for u, v, attr in useful_edges:
             G_sol.add_edge(u, v, **attr)
-        # --- START: ADDED CODE FOR AVG TIME CALCULATION ---
         solution["average_times"] = {}
         for comm_key, path_data in solution["path_flows"].items():
             total_weighted_time = 0
             total_flow_for_comm = 0
-            
+
             for path_str, flow_val_str in path_data.items():
                 flow_val = float(flow_val_str.replace("?", ""))
-                if flow_val < 1e-6: # Skip paths with no flow
+                if flow_val < 1e-6:  # Skip paths with no flow
                     continue
 
                 path_time = 0
@@ -261,25 +254,23 @@ def solve_for_one_network():
                     k = edge_data.get("k", 0)
                     # Get the total flow 'x' on this edge
                     x = float(solution["edge_flows"][(u, v)].replace("?", ""))
-
-                    # Calculate time for this edge: (k * x) + distance
                     edge_time = (k * x) + distance
                     path_time += edge_time
-                
+
                 # Add this path's total time, weighted by its flow
                 total_weighted_time += path_time * flow_val
                 total_flow_for_comm += flow_val
 
-            # Calculate the final average time for this commodity
             if total_flow_for_comm > 0:
                 avg_time = total_weighted_time / total_flow_for_comm
                 solution["average_times"][comm_key] = f"{avg_time:.2f}"
             else:
                 solution["average_times"][comm_key] = "0.00"
-        # --- END: ADDED CODE FOR AVG TIME CALCULATION ---
         for (u, v), flow in sorted(solution["edge_flows"].items()):
             capacity = G_sol.get_edge_data(u, v).get("capacity", "inf")
-            status = "works" if float(flow.replace("?", "")) <= capacity else "RIP safety"
+            status = (
+                "works" if float(flow.replace("?", "")) <= capacity else "RIP safety"
+            )
             print(f"  - Flow on {u}->{v}: {flow} (capacity: {capacity}) -> {status}")
 
         print("\n\nResulting path flows for each commodity:")
@@ -302,23 +293,28 @@ def solve_for_one_network():
         print("\n\nNo solution found. The safety limits are too strict.")
     return solution
 
+
 def read_from_file():
-    global multigraph_edges,traffic
-    with open('network.json', 'r') as f:
+    global multigraph_edges, traffic
+    with open("network.json", "r") as f:
         data = json.load(f)
         multigraph_edges = data["edges"]
         traffic = data["traffic"]
+
 
 def set_multigraph_edges(edges):
     global multigraph_edges
     multigraph_edges = edges
 
+
 def set_k(k):
     global K
-    K =k
+    K = k
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     from data_collection import compute_revenue
+
     read_from_file()
     solution = solve_for_one_network()
     compute_revenue(solution)
@@ -332,7 +328,7 @@ if __name__=="__main__":
         dst = input("Destination station: ").strip()
         # color = input("Line color/name (e.g., blue, yellow): ").strip() or "new"
         distance = int(input("Enter the metro line lenght(in Km): ").strip())
-        multigraph_edges.append([src, dst, "Blue",distance])
+        multigraph_edges.append([src, dst, "Blue", distance])
 
         print(f"\nAdded new metro line: {src} <-> {dst} Lenght:{distance} KM)")
         print("Recomputing equilibrium with updated network...")
